@@ -13,6 +13,8 @@ export default function Film(props) {
       .then(response => {
           // Bu kısmı log statementlarıyla çalışın
           // ve burdan gelen response'u 'movie' e aktarın
+          console.log(response.data)
+          setMovie(response.data)
       })
       .catch(error => {
         console.error(error);
@@ -28,7 +30,7 @@ export default function Film(props) {
     return <div>Film bilgisi yükleniyor...</div>;
   }
 
-  const { title, director, metascore, stars } = movie;
+  const { title, director, metascore,stars } = movie;
 
   return (
     <div className="save-wrapper">
@@ -41,12 +43,11 @@ export default function Film(props) {
           Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
+        {stars.map(star=>(
 
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
+        star+=" ,"))}
+
+       
       </div>
       <div className="save-button">Kaydet</div>
     </div>
